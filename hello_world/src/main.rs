@@ -3,6 +3,7 @@
 // the lines above are used to prevent compiler warnings
 
 use std::mem;
+mod stack_and_heap;
 
 fn core_data_types() {
     let _x = 0; // unused variable, if the above allow dead_code 
@@ -94,4 +95,5 @@ fn operators() {
 fn main() {
     core_data_types();
     operators();
+    stack_and_heap::stack_and_heap_fn();
 }
