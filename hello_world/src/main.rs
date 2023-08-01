@@ -4,6 +4,7 @@
 
 use std::mem;
 mod stack_and_heap;
+mod match_statement;
 
 fn core_data_types() {
     let _x = 0; // unused variable, if the above allow dead_code 
@@ -77,7 +78,7 @@ fn operators() {
     let c = 1 | 2;
     println!("1|2 = {}", c);
 
-    let two_to_10 = 1 << 10; // left shift multiplies by 2^n;
+    let two_to_10: i32 = 1 << 10; // left shift multiplies by 2^n;
     println!("2^n = {}", two_to_10);
 
     // logical operators
@@ -92,8 +93,47 @@ fn operators() {
 
 }
 
+fn while_loop() {
+    let mut x: i16 = 1;
+    while x < 1000 {
+        x *= 2;
+
+        if x == 64 {
+            continue;
+        }
+        println!("x = {}", x);
+    }
+
+    let mut y = 1;
+
+    loop // equavalent of while true
+    {
+        y *= 2;
+        println!("y = {}", y);
+
+        if y == 1 << 10 { break; }
+    } 
+}
+
+fn for_loop() {
+    // print all values from 1 to 10
+    for ind in 1..11 {
+        println!("ind = {}", ind);
+    }
+
+    for (ind, y) in (30..41).enumerate() {
+        // ind is in [0, 11)
+        // while y is in [30, 41)
+        println!("{}: {}", ind, y);
+    }
+}
+
 fn main() {
-    core_data_types();
-    operators();
-    stack_and_heap::stack_and_heap_fn();
+    // core_data_types();
+    // operators();
+    // stack_and_heap::stack_and_heap_fn();
+    // while_loop();
+    // for_loop();
+
+    match_statement::match_statement();
 }
