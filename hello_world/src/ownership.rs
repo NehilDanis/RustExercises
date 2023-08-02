@@ -9,6 +9,15 @@ barrowing, slces, ..
 #![allow(dead_code)]
 #![allow(unused_imports)]
 
+fn takes_ownership(some_string: String) { // some_string comes into scope
+    println!("some_string = {}", some_string);
+}   // here some_string goes out of the scope, and the drop is called on it
+    // hence the backing memory is deleted.
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!("some_integer = {}", some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
+
 pub fn ownership() {
 
     /*
@@ -66,4 +75,15 @@ pub fn ownership() {
     // if a type uses a drop trait (type that is allocated in the heap), then it won't have copy trait
     // as a general rule, any group of simple scalar values can implement copy trait
 
+
+    // Example 3 
+
+    let s4 =  String::from("hey!");
+    takes_ownership(s4);
+
+
+    let z = 3;
+    makes_copy(z);
+
 }
+
