@@ -30,6 +30,40 @@ pub fn ownership() {
     
     */
 
+    // Example 1
+    let s1 = String::from("hello"); // allocated in the heap
+    let s2 = s1;
 
+    /*
+    Since these variables are are both on the heap, Rust does not want the deep copy
+    since it would be expensive. 
+
+    So it does shallow copy then?
+    Not really, in case of a shallow copy you would get the double deletion issue, when the 
+    variables go out of the scope. So Rust, instead moves the ownership from one variable to 
+    another. In the above case s1 will be moved into s2. s1 will be invalid and in case you
+    try using s1, you will get a compile error.
+
+    In cpp, it would not give compile error.
+    */
+
+    println!("{}", s2);
+
+    // in case we really want to do a deep copy, clone method can be used
+    let s3 = s2.clone();
+    println!("s2 = {}, s3 = {}", s2, s3);
+
+    // Example 2
+
+    /*
+    For basic types copying directly happens, since the size of the variable is already known
+    in the compile time,  it will be kept in the stack as well.
+    */
+    let x =  5;
+    let y = x;
+    println!("x = {}, y = {}", x, y);
+
+    // if a type uses a drop trait (type that is allocated in the heap), then it won't have copy trait
+    // as a general rule, any group of simple scalar values can implement copy trait
 
 }

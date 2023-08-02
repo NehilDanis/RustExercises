@@ -5,6 +5,7 @@
 use std::mem;
 mod stack_and_heap;
 mod match_statement;
+mod ownership;
 
 fn core_data_types() {
     let _x = 0; // unused variable, if the above allow dead_code 
@@ -134,6 +135,7 @@ fn main() {
     // stack_and_heap::stack_and_heap_fn();
     // while_loop();
     // for_loop();
+    // match_statement::match_statement();
 
-    match_statement::match_statement();
+    ownership::ownership();
 }
