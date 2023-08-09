@@ -7,6 +7,7 @@ mod stack_and_heap;
 mod match_statement;
 mod ownership;
 mod references_and_barrowing;
+mod slicing;
 
 fn core_data_types() {
     let _x = 0; // unused variable, if the above allow dead_code 
@@ -138,5 +139,13 @@ fn main() {
     // for_loop();
     // match_statement::match_statement();
     // ownership::ownership();
-    references_and_barrowing::references_and_barrowing();
+    //references_and_barrowing::references_and_barrowing();
+
+    let mut s  = String::from("Hello world!");
+
+    let word = slicing::slice_by_space_using_slicing(&s);
+
+    // s.clear();  --> compile error, cannot borrow `s` as mutable because it is also borrowed as immutable
+
+    println!("First word is {}", &word);
 }
