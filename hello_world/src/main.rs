@@ -8,6 +8,8 @@ mod match_statement;
 mod ownership;
 mod references_and_barrowing;
 mod slicing;
+mod data_structures;
+mod traits_examples;
 
 fn core_data_types() {
     let _x = 0; // unused variable, if the above allow dead_code 
@@ -141,11 +143,16 @@ fn main() {
     // ownership::ownership();
     //references_and_barrowing::references_and_barrowing();
 
-    let mut s  = String::from("Hello world!");
+    // let mut s  = String::from("Hello world!");
 
-    let word = slicing::slice_by_space_using_slicing(&s);
+    // let word = slicing::slice_by_space_using_slicing(&s);
 
     // s.clear();  --> compile error, cannot borrow `s` as mutable because it is also borrowed as immutable
 
-    println!("First word is {}", &word);
+    // println!("First word is {}", &word);
+
+    //data_structures::structures();
+
+    traits_examples::traits_examples();
+
 }
