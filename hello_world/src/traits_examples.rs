@@ -107,6 +107,35 @@ impl Person {
 // drop trait -- functionaly equivalent to destructor
 
 
+// try to implement ADL
+
+
+mod lib {
+    pub trait Processable {
+        fn process(self);
+    }
+    
+    pub struct Impl1 {}
+    impl Processable for Impl1 {
+        fn process(self) {
+            println!("Impl1");
+        }
+    }
+    
+    pub fn generalize<T: Processable>(t: T) { t.process(); }
+}
+
+mod client {
+    pub struct Impl2 {}
+    impl super::lib::Processable for Impl2 {
+        fn process(self) {
+            println!("Impl2");
+        }
+    }
+}
+
+
+
 pub fn traits_examples() {
     let h = Human{name: "John"};
     h.talk();
@@ -124,5 +153,11 @@ pub fn traits_examples() {
     let _john = Person::new("John");
     let name = "Jane".to_string();
     let _jane = Person::new(name);
+
+    let impl1 = lib::Impl1{};
+    lib::generalize(impl1);
+
+    let impl2 = client::Impl2{};
+    lib::generalize(impl2);
 
 }
