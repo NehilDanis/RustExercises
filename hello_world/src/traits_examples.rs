@@ -134,6 +134,52 @@ mod client {
     }
 }
 
+// drop trait
+
+struct Creature {
+    name: String
+}
+
+impl Creature {
+    fn new(name: &str) -> Creature {
+        println!("{} entered the game", name);
+        Creature { name: name.into() }
+    }
+}
+
+impl Drop for Creature {
+    fn drop(&mut self) {
+        println!("{} is dead", self.name);
+    }
+}
+
+pub fn drop_trait () {
+    let _goblin = Creature::new("Jeff");
+    println!("Game proceeds..");
+}
+
+// operator overloading
+// done using traits
+
+use std::ops::Add;
+
+struct Complex<T> 
+{
+    re: T,
+    im: T
+}
+
+impl<T> Complex<T> {
+    // fn new(re: T, im: T) -> Complex<T> {
+    //     Complex(re, im)
+    // }
+}
+
+
+// static dispatch --> templated functions
+
+// dynamic dispatch --> polymorphism
+
 
 
 pub fn traits_examples() {

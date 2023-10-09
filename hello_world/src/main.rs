@@ -153,6 +153,8 @@ fn main() {
 
     //data_structures::structures();
 
-    traits_examples::traits_examples();
+    //traits_examples::traits_examples();
+
+    traits_examples::drop_trait();
 
 }
